@@ -12,6 +12,22 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage", "declarativeNetRequest", "tabs"],
-  "host_permissions": ["<all_urls>"]
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "blocked.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

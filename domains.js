@@ -56,3 +56,25 @@ export function hostFromUrl(url) {
 export function findCovering(host, list) {
   return list.filter((domain) => host === domain || host.endsWith(`.${domain}`));
 }
+
+/**
+ * Block-page URL that carries the original URL, in the same raw format the
+ * redirect rule produces: "<blockedPage>?url=<original URL, not encoded>".
+ */
+export function blockedPageUrl(blockedPage, originalUrl) {
+  return `${blockedPage}?url=${originalUrl}`;
+}
+
+/**
+ * Pull the original URL back out of a block-page URL. Everything after the
+ * first "?url=" is the original URL (it may have its own "?" and "&").
+ * Returns null unless it's an http(s) URL, so we never navigate somewhere
+ * odd like "javascript:".
+ */
+export function originalUrlFromBlockedPage(href) {
+  const marker = '?url=';
+  const i = href.indexOf(marker);
+  if (i === -1) return null;
+  const original = href.slice(i + marker.length);
+  return hostFromUrl(original) ? original : null;
+}

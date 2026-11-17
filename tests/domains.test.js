@@ -1,6 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { normalize, hostFromUrl, findCovering } from '../domains.js';
+import {
+  normalize, hostFromUrl, findCovering, blockedPageUrl, originalUrlFromBlockedPage,
+} from '../domains.js';
 
 test('normalize: plain domains', () => {
   assert.equal(normalize('youtube.com'), 'youtube.com');
@@ -57,4 +59,20 @@ test('findCovering: lookalike domains are not covered', () => {
 
 test('findCovering: subdomain entry does not cover the parent', () => {
   assert.deepEqual(findCovering('youtube.com', ['music.youtube.com']), []);
+});
+
+const PAGE = 'chrome-extension://abc/blocked.html';
+
+test('blocked page URL round-trips the original URL, including its query string', () => {
+  const original = 'https://www.youtube.com/watch?v=abc&t=10&list=x';
+  const href = blockedPageUrl(PAGE, original);
+  assert.equal(href, `${PAGE}?url=${original}`);
+  assert.equal(originalUrlFromBlockedPage(href), original);
+});
+
+test('originalUrlFromBlockedPage: missing or unsafe url gives null', () => {
+  assert.equal(originalUrlFromBlockedPage(PAGE), null);
+  assert.equal(originalUrlFromBlockedPage(`${PAGE}?url=`), null);
+  assert.equal(originalUrlFromBlockedPage(`${PAGE}?url=javascript:alert(1)`), null);
+  assert.equal(originalUrlFromBlockedPage(`${PAGE}?url=chrome://settings`), null);
 });
