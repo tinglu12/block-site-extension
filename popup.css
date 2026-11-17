@@ -1,0 +1,83 @@
+:root {
+  --bg: #ffffff;
+  --text: #1f2328;
+  --muted: #656d76;
+  --block: #d63031;
+  --block-hover: #b9282a;
+  --neutral: #e9ecef;
+  --neutral-hover: #dde1e5;
+  --error: #b9282a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1f22;
+    --text: #e6e6e6;
+    --muted: #9aa0a6;
+    --neutral: #2f3136;
+    --neutral-hover: #3a3d42;
+    --error: #ff7b72;
+  }
+}
+
+body {
+  margin: 0;
+  width: 280px;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  padding: 16px;
+}
+
+.status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.site {
+  margin: 2px 0 12px;
+  font-size: 17px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+button {
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--neutral);
+  color: var(--text);
+}
+
+button:hover:not(:disabled) {
+  background: var(--neutral-hover);
+}
+
+button.block {
+  background: var(--block);
+  color: #fff;
+}
+
+button.block:hover:not(:disabled) {
+  background: var(--block-hover);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.error {
+  margin: 8px 0 0;
+  color: var(--error);
+  font-size: 12px;
+}
