@@ -1,0 +1,68 @@
+/* Shared colors and controls for the popup, block page and list page. */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --text: #1f2328;
+  --muted: #656d76;
+  --block: #d63031;
+  --block-hover: #b9282a;
+  --neutral: #e9ecef;
+  --neutral-hover: #dde1e5;
+  --error: #b9282a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1f22;
+    --surface: #26282c;
+    --text: #e6e6e6;
+    --muted: #9aa0a6;
+    --neutral: #2f3136;
+    --neutral-hover: #3a3d42;
+    --error: #ff7b72;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+button {
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--neutral);
+  color: var(--text);
+}
+
+button:hover:not(:disabled) {
+  background: var(--neutral-hover);
+}
+
+button.block {
+  background: var(--block);
+  color: #fff;
+}
+
+button.block:hover:not(:disabled) {
+  background: var(--block-hover);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.error {
+  margin: 8px 0 0;
+  color: var(--error);
+  font-size: 12px;
+}

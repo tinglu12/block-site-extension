@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Site blocked</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="blocked.css">
   <script type="module" src="blocked.js"></script>
 </head>
 <body>
-  <h1 id="message">This site is blocked</h1>
+  <main class="card">
+    <img src="icons/icon128.png" alt="" width="56" height="56">
+    <h1 id="title">This site is blocked</h1>
+    <p id="url" class="url" hidden></p>
+    <button id="unblock" type="button" hidden>Unblock this site</button>
+    <p id="error" class="error" hidden></p>
+  </main>
 </body>
 </html>
