@@ -1,8 +1,8 @@
 // Service worker. Two jobs:
 //  1. Keep Chrome's redirect rules (declarativeNetRequest) in sync with the
 //     block list in storage.
-//  2. Handle "block" / "unblock" messages from the popup, block page and
-//     list page. All list changes go through here so they can't race.
+//  2. Handle "block" / "unblock" / "remove" messages from the popup, block
+//     page and list page. All list changes go through here so they can't race.
 
 import { normalize, hostFromUrl, findCovering, blockedPageUrl } from './domains.js';
 import { getList, setList, STORAGE_KEY } from './storage.js';
