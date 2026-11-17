@@ -24,3 +24,7 @@ main {
 button {
   width: 100%;
 }
+
+#manage {
+  margin-top: 8px;
+}

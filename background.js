@@ -82,10 +82,24 @@ async function unblock(rawHost) {
   return { ok: true, removed: covering };
 }
 
+/**
+ * Remove exactly one entry, as written in the list. Used by the list page:
+ * clicking Unblock on "music.youtube.com" there shouldn't also delete a
+ * separate "youtube.com" row the way unblock() would.
+ */
+async function remove(domain) {
+  if (typeof domain !== 'string') return { ok: false, error: 'invalid domain' };
+  const list = await getList();
+  await setList(list.filter((entry) => entry !== domain));
+  await rebuildRules();
+  return { ok: true };
+}
+
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   let task;
   if (message?.type === 'block') task = () => block(message.domain);
   else if (message?.type === 'unblock') task = () => unblock(message.host);
+  else if (message?.type === 'remove') task = () => remove(message.domain);
   else return false; // not ours
 
   serialized(task)

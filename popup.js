@@ -13,6 +13,11 @@ const siteEl = document.getElementById('site');
 const button = document.getElementById('action');
 const errorEl = document.getElementById('error');
 
+document.getElementById('manage').onclick = () => {
+  chrome.runtime.openOptionsPage(); // opens list.html, or focuses it if already open
+  window.close();
+};
+
 function showBlock(host) {
   statusEl.textContent = 'Current site';
   siteEl.textContent = host;

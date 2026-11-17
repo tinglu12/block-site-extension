@@ -9,6 +9,8 @@ const urlEl = document.getElementById('url');
 const button = document.getElementById('unblock');
 const errorEl = document.getElementById('error');
 
+document.getElementById('manage').onclick = () => chrome.runtime.openOptionsPage();
+
 const originalUrl = originalUrlFromBlockedPage(location.href);
 const host = originalUrl && hostFromUrl(originalUrl);
 

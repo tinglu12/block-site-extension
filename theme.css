@@ -66,3 +66,18 @@ button:disabled {
   color: var(--error);
   font-size: 12px;
 }
+
+/* Text-style button, e.g. "Manage blocked sites". */
+button.link {
+  padding: 4px;
+  background: none;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+button.link:hover {
+  background: none;
+  color: var(--text);
+  text-decoration: underline;
+}

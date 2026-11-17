@@ -1,0 +1,76 @@
+/* List page layout. Colors and button styles come from theme.css. */
+
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.add {
+  display: flex;
+  gap: 8px;
+}
+
+.add input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid var(--neutral-hover);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.add input:focus {
+  outline: 2px solid var(--block);
+  outline-offset: -1px;
+}
+
+/* "Already blocked" is information, not an error. */
+#add-message.info {
+  color: var(--muted);
+}
+
+.empty {
+  margin: 24px 0 0;
+  color: var(--muted);
+}
+
+.list {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--neutral);
+}
+
+.list .domain {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.list button {
+  padding: 6px 12px;
+  font-size: 13px;
+}
